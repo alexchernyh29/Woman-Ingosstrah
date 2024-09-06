@@ -7,3 +7,82 @@
         padding wm(120) wm(30) wm(50)
         overflow auto
         height 100%
+
+    &__container
+        max-width w(1400)
+        width 100%
+        height w(760)
+        position absolute
+        top 50%
+        left 50%
+        transform translate(-50%, -50%)
+        box-shadow 0px 0px 16px 2px rgb(6, 91, 164)
+        background $c-white
+        border-radius w(20)
+        padding w(60) w(40) w(120)
+        +below(800px)
+            position relative
+            max-width 100%
+            top 0%
+            left 0%
+            transform translate(0%, 0%)
+
+    &__button
+        position absolute
+        top 100%
+        left 50%
+        transform translate(-50%, -50%)
+        display flex
+        flex-direction row
+        justify-content center
+        align-items center
+        width w(190)
+        height w(190)
+        border-radius 50%
+        background-color $c-yellow
+        color $c-white
+        font-family $ff-IngoStem-Medium
+        font-size w(20)
+        font-weight 400
+        line-height w(28)
+        text-align center
+        text-transform uppercase
+        z-index 1
+        cursor pointer
+        &:hover
+            transition scale(1.3)
+
+    &__bg-img
+        position absolute
+        bottom w(-3)
+        right w(0)
+        width w(700)
+        img
+            width 100%
+
+    &__wrap
+        display flex
+        flex-direction row
+
+    &__img
+        width w(350)
+        img
+            width 100%
+
+    &__text
+        max-width w(900)
+        margin w(70) w(0) w(30) w(30)
+        color $c-blue
+        font-family $ff-IngoStem-Light
+        font-size w(35)
+        font-weight 400
+        line-height w(40)
+
+    &__author
+        margin-left w(30)
+        margin-bottom w(40)
+        color $c-blue
+        font-family $ff-IngoStem-Bold
+        font-size w(25)
+        font-weight 400
+        line-height w(29)

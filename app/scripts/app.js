@@ -106,18 +106,38 @@ $(() => {
         }
     ];
 
+    let lastIndex = null;
+    let quotesCopy = [...quotes];
+
     $('.test__button').click(function() {
-        let randomIndex = Math.floor(Math.random() * quotes.length);
+        if (quotesCopy.length === 0) {
+            quotesCopy = [...quotes]; // Возвращаем оригинальный набор, если копия пустая
+        }
+
+        let randomIndex;
+        // Генерируем новый индекс, отличающийся от последнего
+        do {
+            randomIndex = Math.floor(Math.random() * quotesCopy.length);
+        } while (randomIndex === lastIndex);
+
+        lastIndex = randomIndex; // Запоминаем последний индекс
+
+        // Выбранная цитата
+        const selectedQuote = quotesCopy[randomIndex];
+
+        // Удаляем выбранную цитату из копии массива
+        quotesCopy.splice(randomIndex, 1);
+        
         $('.test__text, .test__author, .test__img, .test__bg-img').fadeOut(500, function() {
-			$('.test__text').text(quotes[randomIndex].text).fadeIn(500);
-			$('.test__author').text(quotes[randomIndex].author).fadeIn(500); 
-			$(".test__img").html(
-				`<img src="${quotes[randomIndex].img}" alt="Image" />`
-			).fadeIn(500); 
-			$(".test__bg-img").html(
-				`<img src="${quotes[randomIndex].image}"" />`
-			).fadeIn(500); 
-		});
+            $('.test__text').text(selectedQuote.text).fadeIn(500);
+            $('.test__author').text(selectedQuote.author).fadeIn(500); 
+            $(".test__img").html(
+            `<img src="${selectedQuote.img}" alt="Image" />`
+            ).fadeIn(500); 
+            $(".test__bg-img").html(
+            `<img src="${selectedQuote.image}" />`
+            ).fadeIn(500); 
+        });
     });
 	
 });
